@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 class ReadFamilyMembersController {
-    async handler(req: Request, res: Response) {
+    async handle(req: Request, res: Response) {
         const member = await {
             name: "Leonardo",
             birthday: "1998-01-20",
