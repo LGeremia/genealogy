@@ -1,13 +1,16 @@
 import express from "express";
-import { CreateFamilyMemberController } from "./controllers/members/CreateFamilyMembersController";
+import { CreateFamilyMembersController } from "./controllers/members/CreateFamilyMembersController";
+import { ReadFamilyMembersController } from "./controllers/members/ReadFamilyMembersController";
 
 const routes = express.Router();
-const createFamilyMemberController = new CreateFamilyMemberController();
+const createFamilyMembersController = new CreateFamilyMembersController();
+const readFamilyMembersController = new ReadFamilyMembersController();
 
 routes.get('/', (req, res) => {
     res.send('Ok!');
 });
 
-routes.post('/members', createFamilyMemberController.handle)
+routes.post('/members', createFamilyMembersController.handle);
+routes.get('/members', readFamilyMembersController.handle)
 
 export default routes;

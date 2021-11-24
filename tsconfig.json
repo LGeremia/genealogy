@@ -1,9 +1,11 @@
 {
     "compilerOptions": {
         "module": "commonjs",
+        "rootDir": "./src",
         "esModuleInterop": true,
         "target": "es6",
         "moduleResolution": "node",
+        "experimentalDecorators": true,
         "sourceMap": true,
         "outDir": "dist"
     },
