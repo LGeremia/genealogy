@@ -10,7 +10,7 @@ class CreatePhotosController {
             "date": date,
             "url": url
         }
-        return res.json();
+        return res.json(photo);
     }
 }
 
