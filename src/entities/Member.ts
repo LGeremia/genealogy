@@ -7,13 +7,22 @@ class Member {
     readonly id: string;
 
     @Column()
-    birthday: Date;
+    birth_date: Date;
+
+    @Column()
+    death_date: Date;
 
     @Column()
     created_at: Date;
 
     @Column()
     updated_at: Date;
+
+    @Column()
+    created_by: string;
+
+    @Column()
+    updated_by: string;
 
     constructor() {
         if (!this.id) {
