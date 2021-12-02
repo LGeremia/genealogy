@@ -4,7 +4,10 @@ import { v4 as uuid } from "uuid"
 @Entity("members")
 class Member {
     @PrimaryColumn()
-    readonly id: string;
+    readonly member_id: string;
+
+    @Column()
+    name: string;
 
     @Column()
     birth_date: Date;
@@ -25,8 +28,8 @@ class Member {
     updated_by: string;
 
     constructor() {
-        if (!this.id) {
-            this.id = uuid();
+        if (!this.member_id) {
+            this.member_id = uuid();
         }
     }
 }
