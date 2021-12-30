@@ -3,14 +3,20 @@
         "module": "commonjs",
         "rootDir": "./src",
         "esModuleInterop": true,
-        "target": "es6",
+        "target": "es2021",
         "moduleResolution": "node",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "sourceMap": true,
-        "outDir": "dist"
+        "outDir": "dist",
+        "typeRoots": [
+            "./src/@types",
+            "./custom_typings",
+            "./@types",
+            "./node_modules/@types"
+        ]
     },
     "lib": [
         "es2015"
-    ]
+    ],
 }

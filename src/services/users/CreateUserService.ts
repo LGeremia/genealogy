@@ -20,7 +20,7 @@ class CreateUserService {
         const userAlreadExists = await usersRepositoriy.findOne({ email });
 
         if (userAlreadExists) {
-            throw new Error("User alread exists!");
+            return new Error("User alread exists!");
         }
 
         const user = usersRepositoriy.create({

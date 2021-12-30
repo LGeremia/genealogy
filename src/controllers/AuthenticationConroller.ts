@@ -4,8 +4,8 @@ import { AuthenticationService } from "../services/AuthenticationService";
 
 
 class AuthenticationController {
-    async handle(request: Request, response: Response) {
-        const { email, password } = request.body;
+    async handle(req: Request, res: Response) {
+        const { email, password } = req.body;
 
         const authenticateUserService = new AuthenticationService();
 
@@ -14,7 +14,11 @@ class AuthenticationController {
             password
         });
 
-        return response.json(token);
+        return res.json(token);
+    }
+
+    logout(req: Request, res: Response) {
+        return res.json({ auth: false, token: null });
     }
 }
 

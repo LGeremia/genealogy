@@ -25,11 +25,11 @@ class AuthenticationService {
         }
 
         const token = sign({
+            subject: user.user_id,
             email: user.email,
             username: user.username
-        }, "107811f1ffc7ee3b816b136c71f54ecb", {
-            subject: user.user_id,
-            expiresIn: "id"
+        }, process.env.SECRET, {
+            expiresIn: 300
         });
 
         return token;
