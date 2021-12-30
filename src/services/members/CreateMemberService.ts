@@ -5,26 +5,28 @@ import { MemberRepositories } from "../../repositories/MembersRepositories";
 interface IMemberRequest {
     name: string,
     birth_date: Date,
-    death_date: Date
+    death_date: Date,
+    created_by: string
 }
 
 class CreateMemberService {
-    async execute({ name, birth_date, death_date }: IMemberRequest) {
-        const memberRepositoriy = getCustomRepository(MemberRepositories);
+    async execute({ name, birth_date, death_date, created_by }: IMemberRequest) {
+        const memberRepository = getCustomRepository(MemberRepositories);
 
-        const memberAlreadExists = await memberRepositoriy.findOne({ name });
+        const memberAlreadExists = await memberRepository.findOne({ name });
 
         if (memberAlreadExists) {
-            throw new Error("User alread exists!");
+            return new Error("User alread exists!");
         }
 
-        const member = memberRepositoriy.create({
+        const member = memberRepository.create({
             name,
             birth_date,
-            death_date
+            death_date,
+            created_by
         });
 
-        await memberRepositoriy.save(member);
+        await memberRepository.save(member);
 
         return member;
     }

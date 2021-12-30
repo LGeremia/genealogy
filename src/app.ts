@@ -1,9 +1,13 @@
 import "reflect-metadata";
 import express, { Request, Response, NextFunction } from 'express';
 import routes from './routes';
-import "express-async-errors"
+import "express-async-errors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
+const port = parseInt(process.env.PORT);
 
 app.use(express.json());
 app.use(routes);
@@ -21,6 +25,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     })
 });
 
-app.listen(process.env.PORT, () => {
-    return console.log(`server is listening on ${process.env.PORT}`);
+app.listen(port, () => {
+    return console.log(`server is listening on ${port}`);
 });

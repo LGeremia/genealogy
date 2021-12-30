@@ -1,5 +1,6 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
 import { v4 as uuid } from "uuid"
+import { User } from "./User";
 
 @Entity("members")
 class Member {
@@ -26,6 +27,11 @@ class Member {
 
     @Column()
     updated_by: string;
+
+    @ManyToOne(() => User)
+    @JoinColumn({ name: "created_by" })
+    @JoinColumn({ name: "updated_by" })
+    user: User;
 
     constructor() {
         if (!this.member_id) {

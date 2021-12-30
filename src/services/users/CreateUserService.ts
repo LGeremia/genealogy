@@ -1,5 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import { UsersRepositories } from "../../repositories/UsersRepositories";
+import { genSalt } from "bcrypt"
 
 
 interface IUserRequest {
@@ -10,11 +11,10 @@ interface IUserRequest {
 }
 
 class CreateUserService {
-    async execute({ username, email, password, salt }: IUserRequest) {
+    async execute({ username, email, salt, password }: IUserRequest) {
         const usersRepositoriy = getCustomRepository(UsersRepositories);
-
         if (!email) {
-            throw new Error("Email incorrect!");
+            return new Error("Email incorrect!");
         }
 
         const userAlreadExists = await usersRepositoriy.findOne({ email });
