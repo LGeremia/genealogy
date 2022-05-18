@@ -28,7 +28,7 @@ class AuthenticationService {
             subject: user.user_id,
             email: user.email,
             username: user.username
-        }, process.env.SECRET, {
+        }, process.env.SECRET_JWT, {
             expiresIn: 300
         });
 

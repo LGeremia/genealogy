@@ -18,7 +18,7 @@ export function ensureAuthenticated(req: Request, res: Response, next: NextFunct
     console.log(token);
 
     try {
-        const { sub } = verify(token, process.env.SECRET) as IPayload;
+        const { sub } = verify(token, process.env.SECRET_JWT) as IPayload;
 
         req.user_id = sub;
 
